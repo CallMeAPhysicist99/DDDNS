@@ -1,0 +1,16 @@
+{
+  "name": "p2p-sidecar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "sidecar.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "b4a": "^1.6.7",
+    "hypercore-crypto": "^3.4.0",
+    "hyperdht": "^6.20.0",
+    "hyperswarm": "^4.11.0"
+  }
+}

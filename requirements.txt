@@ -1,0 +1,22 @@
+# Python packages (pip install -r requirements.txt)
+#
+# The terminal: line editing, history, Tab completion, hidden passwords, status bar.
+# Optional: without it the program falls back to the plain classic console.
+prompt_toolkit>=3.0
+
+# Everything else is Python's standard library.
+#
+# What a device also needs:
+#
+#   Python 3.10 or newer
+#
+#   Node.js 18 or newer (https://nodejs.org), then once, in core/sidecar:
+#       npm install
+#   This installs Hyperswarm and the other Node packages listed in
+#   core/sidecar/package.json. Run it on every device: some of those packages
+#   contain compiled parts, so don't copy node_modules between operating systems.
+#
+#   setup.ps1 (Windows) or setup.sh (Linux, macOS) does all of this in one go.
+#
+# Don't copy data/ to another device: data/identity.json is that device's
+# identity, and a new one is created automatically on first start.

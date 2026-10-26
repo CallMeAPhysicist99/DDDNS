@@ -1,0 +1,27 @@
+# This device's identity (its private key), networks, log and history.
+# Never commit it: whoever has data/identity.json IS this node.
+data/
+identity*.json
+*.backup
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.tmp
+
+# Node.js: installed per device with `npm install` (some packages are compiled)
+node_modules/
+
+# PyCharm: personal settings (the project files in .idea/ are fine to share)
+.idea/workspace.xml
+.idea/shelf/
+.idea/httpRequests/
+.idea/dataSources/
+.idea/dataSources.local.xml
+
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini

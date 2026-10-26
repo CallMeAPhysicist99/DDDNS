@@ -1,0 +1,9 @@
+# Store text with LF line endings; check out with the platform's own.
+* text=auto
+
+# Shell scripts must keep LF, or they won't run on Linux / a Raspberry Pi.
+*.sh text eol=lf
+*.service text eol=lf
+
+# PowerShell scripts keep CRLF for Windows PowerShell 5.1.
+*.ps1 text eol=crlf

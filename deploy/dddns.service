@@ -1,0 +1,32 @@
+# DDDNS as a systemd service (Linux, Raspberry Pi).
+#
+# 1. Put the project in /opt/dddns and run ./setup.sh there.
+# 2. Join your network once interactively, as the user below:
+#        sudo -u dddns /opt/dddns/venv/bin/python /opt/dddns/main.py
+#    (/join <topic>, then /quit). The node remembers it from then on.
+# 3. Change "home" below to your network's name, then:
+#        sudo cp deploy/dddns.service /etc/systemd/system/
+#        sudo systemctl daemon-reload
+#        sudo systemctl enable --now dddns
+#    Follow it with:  journalctl -u dddns -f    (also in data/dddns.log)
+
+[Unit]
+Description=DDDNS node (decentralized dynamic DNS)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=dddns
+WorkingDirectory=/opt/dddns
+ExecStart=/opt/dddns/venv/bin/python main.py --headless --network home
+# Stopping sends SIGTERM: the node says goodbye to its peers before it exits.
+Restart=on-failure
+RestartSec=10
+# Exit code 2 means a setup problem (no such network): restarting won't fix it.
+RestartPreventExitStatus=2
+# Lets a non-root user serve DNS on port 53 and DDNS on port 80.
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
